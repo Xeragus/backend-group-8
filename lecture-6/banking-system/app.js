@@ -3,7 +3,7 @@ var express = require('express')
 var path = require('path')
 var cookieParser = require('cookie-parser')
 var logger = require('morgan')
-
+const mongoose = require('mongoose')
 var indexRouter = require('./routes/index')
 var usersRouter = require('./routes/users')
 const accountRouter = require('./routes/accounts')
@@ -11,6 +11,11 @@ const customersRouter = require('./routes/customers')
 const transferRouter = require('./routes/transfer')
 
 var app = express()
+
+mongoose.connect(
+  'mongodb+srv://bobz:87-pr-12@lavovigroup.ngbhd.mongodb.net/banking_system_cloud?retryWrites=true&w=majority', 
+  { useNewUrlParser: true, useUnifiedTopology: true }
+)
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'))
