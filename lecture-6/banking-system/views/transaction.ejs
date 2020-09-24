@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+<%- include('partials/nav') %>
+<div class="container mt-5" style="width: 400px;">
+  <form action="/transfer" method="post">
+    <div class="form-group">
+      <label for="from_account">From Account</label>
+      <input type="text" name="from_account" class="form-control" id="from_account" value="<%= transaction.from_account_id %>" aria-describedby="from_account">
+    </div>
+    <div class="form-group">
+      <label for="to_account">To Account</label>
+      <input type="text" name="to_account" class="form-control" id="to_account" value="<%= transaction.to_account_id %>" aria-describedby="to_account">
+    </div>
+    <div class="form-group">
+      <label for="amount">Amount</label>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">$</span>
+        </div>
+        <input type="text" name="amount" class="form-control" value="<%= transaction.amount %>" aria-label="Amount (to the nearest dollar)">
+        <div class="input-group-append">
+          <span class="input-group-text">.00</span>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <textarea class="form-control" name="comment" id="comment" rows="3"><%= transaction.comment %></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Transfer</button>
+  </form>
+</div>
+<%- include('partials/footer') %>  
