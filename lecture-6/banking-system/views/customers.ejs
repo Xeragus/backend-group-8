@@ -9,27 +9,24 @@
         <th scope="col">Name</th>
         <th scope="col">Address</th>
         <th scope="col">Phone</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>Boban Sugareski</td>
-        <td>Prvomajska bb, Skopje</td>
-        <td>+389 7546759843</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Boban Sugareski</td>
-        <td>Prvomajska bb, Skopje</td>
-        <td>+389 7546759843</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Boban Sugareski</td>
-        <td>Prvomajska bb, Skopje</td>
-        <td>+389 7546759843</td>
-      </tr>
+      <% customers.forEach(customer => { %>
+        <tr>
+          <th scope="row"><%= customer.id_number  %></th>
+          <td><%= customer.first_name + ' ' + customer.last_name %></td>
+          <td><%= customer.address %></td>
+          <td><%= customer.phone %></td>
+          <td>
+            <a href="/customers/<%= customer._id %>" class="btn btn-warning"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <a href="javascript:;" data-id="<%= customer._id %>" class="btn btn-danger customer-remove-btn">
+              <i class="fa fa-trash-o" aria-hidden="true" data-id="<%= customer._id %>"></i>
+            </a>
+          </td>
+        </tr>
+      <% }) %>
     </tbody>
   </table>
 </div>

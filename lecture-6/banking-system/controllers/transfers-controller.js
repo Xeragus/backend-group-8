@@ -13,7 +13,6 @@ module.exports = {
       from_account_id: req.body.from_account,
       to_account_id: req.body.to_account,
       amount: req.body.amount,
-      dob: '03/03/2001',
       comment: req.body.comment
     })
 

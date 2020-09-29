@@ -1,18 +1,32 @@
 <%- include('partials/header') %>
 <%- include('partials/nav') %>
 <div class="container mt-5 px-5 mx-5">
+  <% if (error) { %>
+    <div class="alert alert-danger mb-5" role="alert">
+      <% messages.forEach(message => { %>
+        <span><%= message %></span>
+      <% }) %>
+    </div>
+  <% } %>
   <form action="/customers" method="post">
     <div class="row">
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <div class="form-group">
           <label for="first_name">First Name</label>
-          <input type="text" name="first_name" class="form-control" id="first_name" aria-describedby="first_name">
+          <input type="text" value="<%= customer.first_name %>" name="first_name" class="form-control" id="first_name" aria-describedby="first_name">
         </div>
       </div>
-      <div class="col-sm-6">
+      <div class="col-sm-4">
         <div class="form-group">
           <label for="last_name">Last Name</label>
-          <input type="text" name="last_name" class="form-control" id="last_name" aria-describedby="last_name">
+          <input type="text" value="<%= customer.last_name %>" name="last_name" class="form-control" id="last_name" aria-describedby="last_name">
+        </div>
+      </div>
+      <div class="col-sm-4">
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="text" value="<%= customer.dob %>" name="dob" class="form-control" id="dob" aria-describedby="dob">
+          <small>07/07/2000</small>
         </div>
       </div>
     </div>
@@ -20,13 +34,14 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label for="id_number">ID Number</label>
-          <input type="text" name="id_number" class="form-control" id="id_number" aria-describedby="id_number">
+          <input type="text" value="<%= customer.id_number %>" name="id_number" class="form-control" id="id_number" aria-describedby="id_number">
+          <small>A1111111</small>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group">
           <label for="address">Address</label>
-          <input type="text" name="address" class="form-control" id="address" aria-describedby="address">
+          <input type="text" value="<%= customer.address %>" name="address" class="form-control" id="address" aria-describedby="address">
         </div>
       </div>
     </div>
@@ -34,19 +49,21 @@
       <div class="col-sm-6">
         <div class="form-group">
           <label for="email">Email</label>
-          <input type="email" name="email" class="form-control" id="email" aria-describedby="email">
+          <input type="email" value="<%= customer.email %>" name="email" class="form-control" id="email" aria-describedby="email">
+          <small>test@test.com</small>
         </div>
       </div>
       <div class="col-sm-6">
         <div class="form-group">
           <label for="phone">Phone</label>
-          <input type="text" name="phone" class="form-control" id="phone" aria-describedby="phone">
+          <input type="text" value="<%= customer.phone %>" name="phone" class="form-control" id="phone" aria-describedby="phone">
+          <small>111-111-111</small>
         </div>
       </div>
     </div>
     <div class="form-group">
       <label for="note">Note</label>
-      <textarea class="form-control" name="note" id="note" rows="3"></textarea>
+      <textarea class="form-control" name="note" id="note" rows="3"><%= customer.first_name %></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Register</button>
   </form>
