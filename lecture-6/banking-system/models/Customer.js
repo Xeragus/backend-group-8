@@ -51,7 +51,7 @@ const schema = mongoose.Schema({
       validator: function(v) {
         return /\d{2}\/\d{2}\/\d{4}/.test(v);
       },
-      message: props => `${props.value} is not a valid phone number!`
+      message: props => `${props.value} is not a valid date of birth!`
     },
   },
   note: {

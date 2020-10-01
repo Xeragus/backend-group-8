@@ -56,5 +56,24 @@ module.exports = {
     const customers = await Customer.find()
     
     res.redirect('/customers')
+  },
+  delete: async (req, res) => {
+    const resContent = {
+      error: false,
+      messages: []
+    }
+
+    try {
+      const customer = Customer.findById(req.body.id)
+      
+      await Customer.remove({ _id: req.body.id })
+      // interpolacija na string
+      resContent.messages.push(`Customer ${customer.first_name} ${customer.last_name} is removed from the system.`)
+    } catch(err) {
+      resContent.error = true
+      resContent.messages.push(err.message)
+    }
+
+    res.send(resContent)
   }
 }
