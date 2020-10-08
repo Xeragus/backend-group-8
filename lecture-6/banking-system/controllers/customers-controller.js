@@ -24,21 +24,10 @@ module.exports = {
       title: 'Customer Registration'
     }
 
-    const customerData = {
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      id_number: req.body.id_number,
-      address: req.body.address,
-      email: req.body.email,
-      phone: req.body.phone,
-      note: req.body.note,
-      dob: req.body.dob
-    }
-
     try {
       const customer = new Customer({
         _id: new mongoose.Types.ObjectId(),
-        ...customerData
+        ...req.body
       })
 
       await customer.save()
@@ -53,9 +42,12 @@ module.exports = {
       return
     }
 
-    const customers = await Customer.find()
-    
     res.redirect('/customers')
+  },
+  update_customer: async (req, res) => {
+    await Customer.updateOne({ _id: req.params.id }, req.body)
+
+    res.redirect(`/customers/${req.params.id}`)
   },
   delete: async (req, res) => {
     const resContent = {
@@ -64,8 +56,7 @@ module.exports = {
     }
 
     try {
-      const customer = Customer.findById(req.body.id)
-      
+      const customer = await Customer.findById(req.body.id)
       await Customer.remove({ _id: req.body.id })
       // interpolacija na string
       resContent.messages.push(`Customer ${customer.first_name} ${customer.last_name} is removed from the system.`)
@@ -75,5 +66,13 @@ module.exports = {
     }
 
     res.send(resContent)
+  },
+  get_customer_update: async (req, res) => {
+    const customer = await Customer.findById(req.params.id)
+
+    res.render('customer-update', {
+      customer: customer,
+      title: 'Customer Update'
+    })
   }
 }

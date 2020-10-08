@@ -21,6 +21,7 @@
           <td><%= customer.phone %></td>
           <td>
             <a href="/customers/<%= customer._id %>" class="btn btn-warning btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+            <a href="/customers/<%= customer._id %>/accounts" class="btn btn-primary btn-sm"><i class="fa fa-files-o" aria-hidden="true"></i></a>
             <a href="javascript:;" data-id="<%= customer._id %>" class="btn btn-danger customer-remove-btn btn-sm">
               <i class="fa fa-trash-o" aria-hidden="true" data-id="<%= customer._id %>"></i>
             </a>

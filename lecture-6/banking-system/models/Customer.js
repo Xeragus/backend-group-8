@@ -56,7 +56,11 @@ const schema = mongoose.Schema({
   },
   note: {
     type: String
-  }
+  },
+  accounts: [{
+    type: mongoose.Types.ObjectId,
+    ref: 'Account'
+  }]
 })
 
 module.exports = mongoose.model('Customer', schema)
