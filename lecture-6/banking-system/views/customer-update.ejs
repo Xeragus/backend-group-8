@@ -23,7 +23,7 @@
         Delete <i class="fa fa-trash-o" data-id="<%= customer._id %>" aria-hidden="true" data-id="<%= customer._id %>"></i>
       </a>
     </div>
-    <div class="col-sm-5">
+    <div class="col-sm-7">
       <div class="card" style="width: 25rem;">
         <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target="#account_create">
           Create <i class="fa fa-plus" aria-hidden="true"></i>
@@ -33,7 +33,7 @@
           <div class="list-group mt-3">
             <% customer.accounts.forEach(account => { %>
               <div class="list-group-item list-group-item-action">
-                <span>Account no.: <%= account._id %> </span><br>
+                <span>Account no.: <a href="/accounts/<%= account._id %>"><%= account._id %></a> </span><br>
                 <span>Currency: <%= account.currency %> </span>
               </div>
             <% }) %>
@@ -120,7 +120,7 @@
     </div>
   </div>
 </div>
-<div class="modal fade" id="account_create" tabindex="-1" aria-labelledby="account_create_label" aria-hidden="true">
+<div class="modal fade" id="account_create" aria-labelledby="account_create_label" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -130,7 +130,6 @@
         </button>
       </div>
       <div class="modal-body">
-        <input type="hidden" value="<%= customer._id %>" id="customer_id">
         <form id="account_create_form">
           <input type="hidden" name="customer_id" value="<%= customer._id %>">
           <div class="form-group">

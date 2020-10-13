@@ -2,8 +2,14 @@ const mongoose = require('mongoose')
 
 const schema = mongoose.Schema({ 
   transaction_number: 'string', 
-  from_account_id: 'string',
-  to_account_id: 'string',
+  from_account: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Account'
+  },
+  to_account: {
+    type: mongoose.Types.ObjectId,
+    ref: 'Account'
+  },
   amount: 'number',
   comment: 'string'
 })

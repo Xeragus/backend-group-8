@@ -34,13 +34,13 @@ module.exports = {
     } catch (err) {
       resContent.error = true
       resContent.messages = [err.message]
-      resContent.customer = customerData
+      resContent.customer = req.body
     }
 
-    if (resContent.error) {
-      res.render('customer-register', resContent)
-      return
-    }
+    // if (resContent.error) {
+    //   res.render('customer-register', resContent)
+    //   return
+    // }
 
     res.redirect('/customers')
   },
@@ -68,7 +68,7 @@ module.exports = {
     res.send(resContent)
   },
   get_customer_update: async (req, res) => {
-    const customer = await Customer.findById(req.params.id)
+    const customer = await Customer.findById(req.params.id).populate('accounts')
 
     res.render('customer-update', {
       customer: customer,

@@ -4,11 +4,11 @@
   <form action="/transfer" method="post">
     <div class="form-group">
       <label for="from_account">From Account</label>
-      <input type="text" name="from_account" class="form-control" id="from_account" value="<%= transaction.from_account_id %>" aria-describedby="from_account">
+      <input type="text" name="from_account" class="form-control" id="from_account" value="<%= transaction.from_account %>" aria-describedby="from_account">
     </div>
     <div class="form-group">
       <label for="to_account">To Account</label>
-      <input type="text" name="to_account" class="form-control" id="to_account" value="<%= transaction.to_account_id %>" aria-describedby="to_account">
+      <input type="text" name="to_account" class="form-control" id="to_account" value="<%= transaction.to_account %>" aria-describedby="to_account">
     </div>
     <div class="form-group">
       <label for="amount">Amount</label>

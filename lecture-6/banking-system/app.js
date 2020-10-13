@@ -14,7 +14,7 @@ const transactionRouter = require('./routes/transactions')
 var app = express()
 
 mongoose.connect(
-  'mongodb+srv://bobz:87-pr-12@lavovigroup.ngbhd.mongodb.net/banking_system_cloud?retryWrites=true&w=majority', 
+  '', 
   { useNewUrlParser: true, useUnifiedTopology: true }
 )
 

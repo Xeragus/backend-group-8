@@ -59,4 +59,32 @@ $(document).ready(function() {
       }
     })
   })
+
+  $('#make_transfer_btn').on('click', (event) => {
+    event.preventDefault()
+
+    $('#make_transfer_form').submit()
+  })
+
+  $('#make_transfer_form').on('submit', (event) => {
+    event.preventDefault()
+
+    $.ajax({
+      url: '/transfer',
+      method: 'POST',
+      data: $('#make_transfer_form').serialize(),
+      success: function(response) {
+        if (response.error) {
+          $('#make_transfer_errors').removeClass('d-none')
+          $('#make_transfer_errors span').text(response.messages[0])
+          $('#make_transfer_errors').addClass('d-block')
+          return
+        }
+
+        location.href = 'http://localhost:3000'
+      }
+    })
+  })
+
+  
 })

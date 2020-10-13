@@ -6,7 +6,11 @@ const schema = mongoose.Schema({
   customer: {
     type: mongoose.Types.ObjectId,
     ref: 'Customer'
-  }
+  },
+  transactions: [{
+    type: mongoose.Types.ObjectId,
+    ref: 'Transaction'
+  }]
 })
 
 module.exports = mongoose.model('Account', schema)
